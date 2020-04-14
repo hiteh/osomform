@@ -1,11 +1,11 @@
 {
-  "name": "your-project",
-  "description": "A WPGulp based project.",
+  "name": "osomform",
+  "description": "WordPress template",
   "version": "1.0.0",
-  "author": "Author Name (https://twitter.com/MrAhmadAwais/)",
+  "author": "Hubert Warzycha (https://222digits.pl/)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ahmadawais/WPGulp"
+    "url": "https://github.com/hiteh/osomform"
   },
   "license": "MIT",
   "devDependencies": {
