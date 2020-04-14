@@ -7,7 +7,6 @@
  * @version 1.0
  */
 
-
 if ( ! function_exists( 'osomform_setup' ) ) {
 	
 	/**

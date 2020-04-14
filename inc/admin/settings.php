@@ -7,7 +7,6 @@
  * @version 1.0
  */
 
-
 /**
  * Register admin osom contacts menu page.
  */
