@@ -26,6 +26,8 @@ input[type=checkbox]{width:auto}
 .site-content-contain{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}
 .consent-checkbox-wrapper,.contact-form-button-wrapper{width:100%;padding:.8rem;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;font-weight:normal}
 .invalid{outline-color:#d9534f;outline-style:solid;outline-width:medium}
+.site-footer .site-info{margin:2rem 0;text-align:center}
+.site-footer .site-info .imprint{font-size:.7rem}
 @media(min-width:576px){.site-content-contain{max-width:540px}
 }@media(min-width:768px){.site-content-contain{max-width:720px}
 }@media(min-width:992px){.site-content-contain{max-width:960px}

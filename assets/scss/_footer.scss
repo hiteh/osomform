@@ -1,0 +1,10 @@
+/* Page footer */
+.site-footer {
+	.site-info {
+		margin: 2rem 0;
+		text-align: center;
+		.imprint {
+		font-size: $footer_imprint_size;
+		}
+	}
+}

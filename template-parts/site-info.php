@@ -17,7 +17,7 @@
 	<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'osomform' ) ); ?>" class="imprint">
 		<?php
 			/* translators: %s: WordPress */
-		printf( __( 'Proudly powered by %s', 'osomform' ), 'WordPress & 222digits.pl' );
+		printf( __( 'Proudly powered by %s', 'osomform' ), 'WordPress' );
 		?>
 	</a>
 </div><!-- .site-info -->
