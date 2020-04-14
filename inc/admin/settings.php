@@ -23,7 +23,7 @@ function osomfom_register_custom_menu_page() {
 }
 
 /**
- * Display a custom menu page
+ * Display contacts table
  */
 function osomform_page() {
     esc_html_e( 'Table with contacts data goes here', 'osomform' );  
