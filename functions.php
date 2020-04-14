@@ -20,6 +20,9 @@ require get_template_directory() . '/inc/scripts.php';
 // Load theme admin settings.
 require get_template_directory() . '/inc/admin/settings.php';
 
+// Load rest controller
+require get_template_directory() . '/inc/api/class-osomform-rest-controller.php';
+
 /**
  * Theme hooks.
  */ 
