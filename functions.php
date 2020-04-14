@@ -10,11 +10,12 @@
  */
 
 /**
- * Basic template setup.
+ * Basic theme setup.
  */
 if ( ! function_exists( 'osomform_setup' ) ) {
 	
 	function osomform_setup() {
+
 		/*
 		 * Switch default core markup for scripts and styles
 		 * to output valid HTML5 (removes type="text/css" and type="text/javascript").
@@ -26,6 +27,7 @@ if ( ! function_exists( 'osomform_setup' ) ) {
 				'style',
 			)
 		);
+
 		/*
 		 * Let WordPress manage the document title.
 		 * By adding theme support, we declare that this theme does not use a
@@ -51,7 +53,6 @@ if ( ! function_exists( 'osomform_setup' ) ) {
 }
 
 add_action( 'after_setup_theme', 'osomform_setup' );
-
 
 /**
  * Enqueue scripts and styles.
