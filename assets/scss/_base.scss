@@ -21,6 +21,15 @@ label {
 	font-weight: bold;
 }
 
+a, a:visited, a:focus, a:active {
+	text-decoration: none;
+	color: inherit;
+}
+
+a:hover {
+	color: #8c8c8c;
+}
+
 input:not([type=submit]), select {
 	border: 1px solid #d9d9d9;
 	background-color: #ffffff;
