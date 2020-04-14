@@ -1,0 +1,70 @@
+/* Page form */
+.form-wrapper {
+	border: 1px solid #d9d9d9;
+	padding: 1rem;
+	border-radius: 5px;
+}
+
+.site-content-contain {
+	width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.consent-checkbox-wrapper,
+.contact-form-button-wrapper {
+	width: 100%;
+	padding: 0.8rem;
+	display: flex;
+	justify-content: flex-end;
+	font-weight: normal;
+}
+
+.invalid {
+	outline-color: #d9534f;
+	outline-style: solid;
+	outline-width: medium; 
+}
+
+/* Media queries */
+@media(min-width: 576px) {
+    .site-content-contain {
+        max-width:540px
+    }
+}
+
+@media(min-width: 768px) {
+    .site-content-contain {
+        max-width:720px
+    }
+}
+
+@media(min-width: 992px) {
+    .site-content-contain {
+        max-width:960px
+    }
+    .contact-form {
+    	width: 66%;
+    	display: flex;
+    	padding: 0 2rem;
+    }
+    .consent {
+    	width: 33%;
+    	padding: 0 2rem;
+    }
+    .form-wrapper {
+    	display: flex;
+    }
+    .contact-form-area-wrapper {
+    	width: 50%;
+    	padding: 0 2rem;
+    }
+}
+
+@media(min-width: 1200px) {
+    .site-content-contain {
+        max-width:1140px
+    }
+}
