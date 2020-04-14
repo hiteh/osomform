@@ -1,6 +1,6 @@
 <?php
 /**
- * Theme bootstrap 
+ * Osom Form Theme 
  *
  * @package osomform
  * @since Osom Form 1.0
