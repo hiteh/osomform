@@ -14,11 +14,11 @@
 function osomfom_register_custom_menu_page() {
 
     add_menu_page( 
-        __( 'OSOM Contacts', 'osomform' ), // menu title
-        __( 'OSOM Contacts', 'osomform' ), // html title
-        'manage_options', // capability
-        'osom_contacts', // menu slug
-        'osomform_page' // function
+        __( 'OSOM Contacts', 'osomform' ),
+        __( 'OSOM Contacts', 'osomform' ),
+        'manage_options',
+        'osom_contacts',
+        'osomform_page'
     ); 
 }
 
@@ -81,8 +81,8 @@ function osomform_sanitize_store_type_field ( string $data ) {
 
 	$mask = ['database', 'file'];
 	$field = array_intersect( [strtolower( $data )], $mask );
-	$field = isset( $out ) && is_string( $out[0] ) ? $out[0] : $mask[0];
-	return $out;
+	$field = isset( $field ) && is_string( $field[0] ) ? $field[0] : $mask[0];
+	return $field;
 }
 
 /**
@@ -94,8 +94,8 @@ function osomform_sanitize_remove_store_field ( string $data ) {
 
 	$mask = ['no', 'yes'];
 	$field = array_intersect( [strtolower( $data )], $mask );
-	$field = isset( $out )  && is_string( $out[0] ) ? $out[0] : $mask[0];
-	return $out;
+	$field = isset( $field )  && is_string( $field[0] ) ? $field[0] : $mask[0];
+	return $field;
 }
 
 /**

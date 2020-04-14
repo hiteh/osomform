@@ -14,14 +14,14 @@
 // Load theme setup.
 require get_template_directory() . '/inc/setup.php';
 
- // Load scripts and styles.
+ // Load theme scripts and styles.
 require get_template_directory() . '/inc/scripts.php';
 
-// Load admin settings.
+// Load theme admin settings.
 require get_template_directory() . '/inc/admin/settings.php';
 
 /**
- * Hooks.
+ * Theme hooks.
  */ 
 
 // Remove unnecessary things from the html head.
