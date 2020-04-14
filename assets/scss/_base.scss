@@ -1,13 +1,13 @@
 /* Page base */
 body, html {
-	font-size: 16px;
-	font-family: Arial, Helvetica, sans-serif;
-	line-height: 1.5;
+	font-size: $base_font_size;
+	font-family: $base_font_family;
+	line-height: $base_font_line_height;
 	-webkit-font-smoothing: antialiased;
 }
 
 h1 {
-	font-size: 2.4rem;
+	font-size: $base_header_font_size;
 	font-weight: bold;
 	text-align: center;
 	margin: 1rem 0;
@@ -21,18 +21,22 @@ label {
 	font-weight: bold;
 }
 
-a, a:visited, a:focus, a:active {
+a,
+a:visited,
+a:focus,
+a:active {
 	text-decoration: none;
 	color: inherit;
 }
 
 a:hover {
-	color: #8c8c8c;
+	color: $links_text_hover;
 }
 
-input:not([type=submit]), select {
-	border: 1px solid #d9d9d9;
-	background-color: #ffffff;
+input:not([type=submit]),
+select {
+	border: 1px solid $inputs_border;
+	background-color: $inputs_background;
 	padding: 0.4rem;
 	border-radius: 5px;
 	width: 100%;
@@ -40,8 +44,8 @@ input:not([type=submit]), select {
 
 input[type=submit] {
 	padding: 0.6rem;
-	background-color: #0275d8;
-	color: #ffffff;
+	background-color: $buttons_background;
+	color: $buttons_text;
 	font-weight: bold;
 	border: 0;
 	border-radius: 5px;
@@ -49,7 +53,7 @@ input[type=submit] {
 }
 
 input[type=submit]:disabled {
-	background-color: #d9d9d9;
+	background-color: $buttons_background_disabled;
 	cursor: not-allowed;
 }
 
