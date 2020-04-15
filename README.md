@@ -1,10 +1,11 @@
 # Osom Form
-Prosty motyw Wordpress wykonany w ramach zdania rekrutacyjnego
+Prosty motyw Wordpress wykonany w ramach zdania rekrutacyjnego.
 
 ## Instalacja:
 * skopiować lub sklonować repozytorium
 * zapisać katalog z motywem w wp_content/themes
 * aktywować motyw
+* Logo można dodać jak w standardowym motywie (obrazek nad formularzem)
 
 ## Development:
 wykorzystałem WPGulp w związku z tym:
