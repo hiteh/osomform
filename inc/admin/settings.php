@@ -25,9 +25,58 @@ function osomfom_register_custom_menu_page() {
  * Display contacts table
  */
 function osomform_page() {
-    esc_html_e( 'Table with contacts data goes here', 'osomform' );  
-}
+	
+	$store_type = get_option( 'osomform_store_type' );
+	
+	if( 'database' === $store_type ) {
+		$store = new OsomformDBRepository();
+		$data = $store->readAll();
+	}
 
+	if( 'file' === $store_type ) {
+		$store = new OsomformFileRepository();
+		$data = json_decode( $store->readAll() );
+	}
+
+	if(!class_exists('WP_List_Table')){
+   		require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
+	}
+
+	?>
+   	<body>
+      <table class="wp-list-table widefat striped">
+         <thead>
+         	<tr>
+	            <th scope="col" class="column-primary manage-column">ID<th>
+	            <th scope="col" class="column-primary manage-column">First Name<th>
+	            <th scope="col" class="column-primary manage-column">Last Name<th>
+	            <th scope="col" class="column-primary manage-column">Login<th>
+	            <th scope="col" class="column-primary manage-column">E-mail<th>
+	            <th scope="col" class="column-primary manage-column">City<th>
+        	</tr>
+         </thead>
+         <tbody>
+	<?php
+
+    foreach ( $data as $key => $value ) :
+    	$data[$key] = $value;
+    	echo '<tr>';
+    	echo '<td class="column-primary">' . $value->id .'<td>';
+    	echo '<td class="column-primary">' . $value->first_name .'<td>';
+    	echo '<td class="column-primary">' . $value->last_name .'<td>';
+    	echo '<td class="column-primary">' . $value->login .'<td>';
+    	echo '<td class="column-primary">' . $value->email .'<td>';
+    	echo '<td class="column-primary">' . $value->city .'<td>';
+    	echo '<tr>';
+    	?>
+    	<?php
+    endforeach;
+    ?>
+		</tbody>
+	</table>
+   </body>
+    <?php 
+}
 /**
  * Adds a submenu page under the osom contacts menu page.
  */

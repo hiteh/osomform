@@ -78,6 +78,10 @@
       data: payload
     }).done(function (response) {
       alert(response.message);
+      inputs.each(function (index, input) {
+        var $target = $(input);
+        !$target.is("select") ? $target.val('') : '';
+      });
     }).fail(function (response) {
       alert(response.error);
     });
@@ -110,5 +114,6 @@
 
     preparePayload();
     sendRequest("POST", endpoint, payload);
+    e.preventDefault();
   });
 })(jQuery);

@@ -157,7 +157,7 @@ class Osomform_REST_Controller extends WP_REST_Controller {
 if( ! function_exists( 'osomform_register_rest_routes' ) ) {
   
   function osomform_register_rest_routes() {
-    
+
     $storage_type = get_option( 'osomform_store_type' );
     
     if( 'file' === $storage_type && ! wp_is_writable( WP_CONTENT_DIR ) ) {
@@ -188,4 +188,3 @@ if( ! function_exists( 'osomform_register_rest_routes' ) ) {
     $controller->register_routes();
   } 
 }
-

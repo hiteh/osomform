@@ -75,6 +75,10 @@
     	} )
     	.done( ( response ) => {
 	      	alert( response.message )
+	      	inputs.each( ( index, input ) => {
+	      		const $target = $( input )
+	      		! $target.is( "select" ) ? $target.val('') : '';
+			} )
     	} )
     	.fail( ( response ) => {
     		alert( response.error );
@@ -116,6 +120,7 @@
 		preparePayload()
 		sendRequest( "POST", endpoint, payload )
 
+		e.preventDefault()
 	} )
 
 })( jQuery );
