@@ -3,7 +3,9 @@
 class OsomformDBRepository implements OsomformRepositoryInterface {
 	
 	const TABLE_NAME = 'osomform';
-
+	const DB_PREFIX = $wpdb->prefix;
+	const DB_TABLE = DB_PREFIX . TABLE_NAME 
+ 
 	public function create( array $data ) {
 
 		global $wpdb;
@@ -18,15 +20,15 @@ class OsomformDBRepository implements OsomformRepositoryInterface {
     public function readAll() {
     	
     	global $wpdb;
-    	$table_name = $wpdb->prefix . OsomformDBRepository::TABLE_NAME;
+    	$table_name = OsomformDBRepository::DB_TABLE;
 		$myrows = $wpdb->get_results( "SELECT * FROM $table_name" );
 		return $myrows;
     }
 
-    public static function osomform_db_table_setup() {
+    public static function storage_setup() {
     	
     	global $wpdb;
-		$table_name = $wpdb->prefix . OsomformDBRepository::TABLE_NAME;
+		$table_name = OsomformDBRepository::DB_TABLE;
 		$charset_collate = $wpdb->get_charset_collate();
 		// dbDelta checks if table exists by using DESCRIBE. If you are unig Query Monitor plugin for some reasons it displays error.
 		$sql = "CREATE TABLE $table_name (
@@ -44,10 +46,10 @@ class OsomformDBRepository implements OsomformRepositoryInterface {
 		dbDelta( $sql );
     }
 
-    public function osomform_db_table_drop() {
+    public static function storage_remove() {
 
 		global $wpdb;
-		$table_name = $wpdb->prefix . "osomform";
+		$table_name = OsomformDBRepository::DB_TABLE;
 		$wpdb->query( "DROP TABLE IF EXISTS $table_name" );
 	}
 }
