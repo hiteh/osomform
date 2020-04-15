@@ -2,6 +2,8 @@
 
 class OsomformDBRepository implements OsomformRepositoryInterface {
 	
+	const TABLE_NAME = 'osomform';
+
 	public function create( array $data ) {
 
 		global $wpdb;
@@ -16,7 +18,7 @@ class OsomformDBRepository implements OsomformRepositoryInterface {
     public function readAll() {
     	
     	global $wpdb;
-    	$table_name = $wpdb->prefix . "osomform";
+    	$table_name = $wpdb->prefix . TABLE_NAME;
 		$myrows = $wpdb->get_results( "SELECT * FROM $table_name" );
 		return $myrows;
     }
