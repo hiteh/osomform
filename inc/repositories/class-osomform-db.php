@@ -18,7 +18,7 @@ class OsomformDBRepository implements OsomformRepositoryInterface {
     public function readAll() {
     	
     	global $wpdb;
-    	$table_name = $wpdb->prefix . TABLE_NAME;
+    	$table_name = $wpdb->prefix . OsomformDBRepository::TABLE_NAME;
 		$myrows = $wpdb->get_results( "SELECT * FROM $table_name" );
 		return $myrows;
     }
@@ -26,7 +26,7 @@ class OsomformDBRepository implements OsomformRepositoryInterface {
     public static function osomform_db_table_setup() {
     	
     	global $wpdb;
-		$table_name = $wpdb->prefix . "osomform";
+		$table_name = $wpdb->prefix . OsomformDBRepository::TABLE_NAME;
 		$charset_collate = $wpdb->get_charset_collate();
 		// dbDelta checks if table exists by using DESCRIBE. 
 		$sql = "CREATE TABLE $table_name (
