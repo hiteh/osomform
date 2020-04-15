@@ -11,9 +11,7 @@
 
 class OsomformDBRepository implements OsomformRepositoryInterface {
 	
-	const TABLE_NAME = 'osomform';
-	const DB_PREFIX = $wpdb->prefix;
-	const DB_TABLE = DB_PREFIX . TABLE_NAME 
+	const DB_TABLE = 'osomform';
  
 	public function create( array $data ) {
 
@@ -29,7 +27,7 @@ class OsomformDBRepository implements OsomformRepositoryInterface {
     public function readAll() {
     	
     	global $wpdb;
-    	$table_name = OsomformDBRepository::DB_TABLE;
+    	$table_name = $wpdb->prefix . OsomformDBRepository::DB_TABLE;
 		$myrows = $wpdb->get_results( "SELECT * FROM $table_name" );
 		return $myrows;
     }
@@ -37,7 +35,7 @@ class OsomformDBRepository implements OsomformRepositoryInterface {
     public static function storage_setup() {
     	
     	global $wpdb;
-		$table_name = OsomformDBRepository::DB_TABLE;
+		$table_name = $wpdb->prefix . OsomformDBRepository::DB_TABLE;
 		$charset_collate = $wpdb->get_charset_collate();
 		// dbDelta checks if table exists by using DESCRIBE. If you are unig Query Monitor plugin for some reasons it displays error.
 		$sql = "CREATE TABLE $table_name (
@@ -58,7 +56,7 @@ class OsomformDBRepository implements OsomformRepositoryInterface {
     public static function storage_remove() {
 
 		global $wpdb;
-		$table_name = OsomformDBRepository::DB_TABLE;
+		$table_name = $wpdb->prefix . OsomformDBRepository::DB_TABLE;
 		$wpdb->query( "DROP TABLE IF EXISTS $table_name" );
 	}
 }

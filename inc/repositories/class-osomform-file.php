@@ -18,19 +18,19 @@ class OsomformFileRepository implements OsomformRepositoryInterface {
 	const FILE_PATH = WP_CONTENT_DIR . OsomformFileRepository::FW_SLASH . OsomformFileRepository::DIR_NAME . OsomformFileRepository::FW_SLASH . OsomformFileRepository::FILE_NAME;
 	const DIR_PATH = WP_CONTENT_DIR . OsomformFileRepository::FW_SLASH . OsomformFileRepository::DIR_NAME;
 
-	private static $current_id = 1;
-	
 	public function create( array $data ) {
     	
     	if( ! wp_is_writable( WP_CONTENT_DIR ) ) {
     		return;
     	}
 		$file = file_get_contents( OsomformFileRepository::FILE_PATH );
-		$temp = json_decode( $file ), true );
+		$temp = json_decode( $file, true );
+		$count = count( $temp );
 		// Release some memory.
-		$unset( $file );
+		unset( $file );
 		// Add item id.
-		array_unshift( $data, $current_id++ );
+		$current_id  = $count > 0 ?  $temp[$count -1]['id'] + 1 : 1;
+		$data['id'] = $current_id;
 		// Add current data.
 		$temp[] = $data;
 		file_put_contents( OsomformFileRepository::FILE_PATH, json_encode( $temp ), LOCK_EX );
@@ -58,7 +58,7 @@ class OsomformFileRepository implements OsomformRepositoryInterface {
 
     public static function storage_remove() {
 
-    	if( ! wp_is_writable( WP_CONTENT_DIR ) || ! file_exists( OsomformFileRepository::DIR_PATH ) {
+    	if( ! wp_is_writable( WP_CONTENT_DIR ) || ! file_exists( OsomformFileRepository::DIR_PATH ) ) {
     		return;
     	}
     	rmdir( OsomformFileRepository::DIR_PATH );
