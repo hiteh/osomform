@@ -16,11 +16,24 @@ class Osomform_REST_Controller extends WP_REST_Controller {
   protected $repository; 
 
   /**
+  * Valid fields list.
+  * @var mixed OsomformRepository
+  */
+  protected $fields = array(
+    'first_name' => 'not_provided',
+    'last_name' => 'not_provided',
+    'login' => 'not_provided',
+    'email' => 'not_provided',
+    'city' => 'not_provided',
+  );
+
+  /**
    * Class constructor
    *
    * @param OsomformRepositoryInterface $repository Data repository.
    */
   public function __construct( OsomformRepositoryInterface $repository ) {
+    
     $this->repository = $repository;
   }
 
@@ -28,6 +41,7 @@ class Osomform_REST_Controller extends WP_REST_Controller {
    * Register the routes for the objects of the controller.
    */
   public function register_routes() {
+    
     register_rest_route( 'osomform/v1', '/osomcontact', array(
       array(
         'methods'  => WP_REST_Server::READABLE,
@@ -41,7 +55,6 @@ class Osomform_REST_Controller extends WP_REST_Controller {
       ),
     ) );
   }
-
 
   /**
    * Check if a given request has access to get items
@@ -63,7 +76,6 @@ class Osomform_REST_Controller extends WP_REST_Controller {
     return true;
   }
 
- 
   /**
    * Get a collection of items
    *
@@ -71,8 +83,14 @@ class Osomform_REST_Controller extends WP_REST_Controller {
    * @return WP_Error|WP_REST_Response
    */
   public function get_items( $request ) {
+    
     $data = $this->repository->readAll();
-    return rest_ensure_response( $data );
+    
+    if ( is_array( $data ) ) {
+      return rest_ensure_response( $data );
+    }
+
+    return new WP_Error( 'cant-get-items', __( 'message', 'osomform' ), array( 'status' => 500 ) );
   }
  
   /**
@@ -84,11 +102,13 @@ class Osomform_REST_Controller extends WP_REST_Controller {
   public function create_item( $request ) {
 
     $item = $this->prepare_item_for_database( $request );
-    $data = $this->repository->create( $item );
+    $id = $this->repository->create( $item );
     
-    if ( is_array( $data ) ) {
+    if ( is_int( $id ) ) {
       return rest_ensure_response( ['message' => __( 'Formularz zapisany.', 'osomform' )] );
     }
+
+    return new WP_Error( 'cant-create', __( 'message', 'osomform' ), array( 'status' => 500 ) );
  
   }
  
@@ -99,12 +119,9 @@ class Osomform_REST_Controller extends WP_REST_Controller {
    * @return WP_Error|object $prepared_item
    */
   protected function prepare_item_for_database( $request ) {
-    $first_name = 'not_provided';
-    $last_name = 'not_provided';
-    $login = 'not_provided';
-    $email = 'not_provided';
-    $city = 'not_provided';
-    extract( $request, EXTR_IF_EXISTS );
+
+    extract( $this->fields );
+    extract( $request->get_body_params(), EXTR_IF_EXISTS );
     return array(
       'first_name'   => sanitize_text_field( trim( $first_name ) ),
       'last_name'    => sanitize_text_field( trim( $last_name ) ),
@@ -121,7 +138,7 @@ class Osomform_REST_Controller extends WP_REST_Controller {
    * @return array
    */
   public function get_collection_params() {
-
+    // TODO: Add schema
   }
 
 }
@@ -130,7 +147,26 @@ class Osomform_REST_Controller extends WP_REST_Controller {
 if( ! function_exists( 'osomform_register_rest_routes' ) ) {
   
   function osomform_register_rest_routes() {
-    global $controller;
+    $storage_type = get_option( 'osomform_store_type' );
+    
+    if( 'file' === $storage_type && ! wp_is_writable( WP_CONTENT_DIR ) ) {
+      return;
+    }
+
+    switch ( $storage_type ) {
+      case 'database':
+        $repository = new OsomformDBRepository();
+        break;
+      case 'file':
+        $repository = new OsomformFileRepository();
+        break;
+      default:
+        $repository = new OsomformDBRepository();
+        break;
+    }
+
+    $controller = new Osomform_REST_Controller( $repository );
     $controller->register_routes();
   } 
 }
+
