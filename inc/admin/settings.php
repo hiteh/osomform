@@ -59,7 +59,6 @@ function osomform_page() {
 	<?php
 
     foreach ( $data as $key => $value ) :
-    	$data[$key] = $value;
     	echo '<tr>';
     	echo '<td class="column-primary">' . $value->id .'<td>';
     	echo '<td class="column-primary">' . $value->first_name .'<td>';
@@ -100,6 +99,10 @@ function osomform_settings_page_callback() {
 	if ( ! current_user_can( 'manage_options' ) ) {
 		return;
 	} 
+
+	if( ! is_writable( WP_CONTENT_DIR ) ) {
+		add_settings_error( 'osomform_messages', 'osomform_message', __( 'The theme has detected that the data cannot be saved to the wp_contents directory. You need to change the access rights to this directory if you want to save data to a file.', 'osomform' ), 'warning' );
+	}
 	// check if the user have submitted the settings
 	// wordpress will add the "settings-updated" $_GET parameter to the url
 	if ( isset( $_GET['settings-updated'] ) ) {
