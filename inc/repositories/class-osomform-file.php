@@ -15,8 +15,16 @@ class OsomformFileRepository implements OsomformRepositoryInterface {
 	const FILE_NAME = 'contacts.json';
 	const DIR_NAME  = 'osomform_storage';
 	const FW_SLASH  = '/';
-	const FILE_PATH = WP_CONTENT_DIR . OsomformFileRepository::FW_SLASH . OsomformFileRepository::DIR_NAME . OsomformFileRepository::FW_SLASH . OsomformFileRepository::FILE_NAME;
-	const DIR_PATH = WP_CONTENT_DIR . OsomformFileRepository::FW_SLASH . OsomformFileRepository::DIR_NAME;
+	
+	const FILE_PATH = WP_CONTENT_DIR .
+	OsomformFileRepository::FW_SLASH .
+	OsomformFileRepository::DIR_NAME .
+	OsomformFileRepository::FW_SLASH .
+	OsomformFileRepository::FILE_NAME;
+	
+	const DIR_PATH = WP_CONTENT_DIR .
+	OsomformFileRepository::FW_SLASH .
+	OsomformFileRepository::DIR_NAME;
 
 	public function create( array $data ) {
 
@@ -49,7 +57,10 @@ class OsomformFileRepository implements OsomformRepositoryInterface {
     	if( ! wp_is_writable( WP_CONTENT_DIR ) ) {
     		return;
     	}
-    	wp_mkdir_p( OsomformFileRepository::DIR_PATH );
+    	if( ! file_exists( OsomformFileRepository::DIR_PATH  ) ) {
+    		wp_mkdir_p( OsomformFileRepository::DIR_PATH );
+    	}
+
 		file_put_contents( OsomformFileRepository::FILE_PATH, json_encode( array() ), LOCK_EX );
     }
 
