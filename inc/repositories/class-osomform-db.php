@@ -1,5 +1,14 @@
 <?php
 
+ /**
+ * Theme database repository
+ *
+ * @implements OsomformRepositoryInterface
+ * @package osomform
+ * @since Osom Form 1.0
+ * @version 1.0
+ */
+
 class OsomformDBRepository implements OsomformRepositoryInterface {
 	
 	const TABLE_NAME = 'osomform';

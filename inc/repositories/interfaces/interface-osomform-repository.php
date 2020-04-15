@@ -1,5 +1,13 @@
 <?php
 
+ /**
+ * Theme repository interface
+ *
+ * @package osomform
+ * @since Osom Form 1.0
+ * @version 1.0
+ */
+
 interface OsomformRepositoryInterface
 {
     public function create( array $data );

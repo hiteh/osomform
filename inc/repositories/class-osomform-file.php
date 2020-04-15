@@ -1,5 +1,15 @@
 <?php
 
+ /**
+ * Theme file repository
+ *
+ * @implements OsomformRepositoryInterface
+ * @package osomform
+ * @since Osom Form 1.0
+ * @version 1.0
+ */
+
+
 class OsomformFileRepository implements OsomformRepositoryInterface {
 
 	const FILE_NAME = 'contacts.json';
