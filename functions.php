@@ -17,6 +17,8 @@ require get_template_directory() . '/inc/admin/settings.php';
 require get_template_directory() . '/inc/repositories/interfaces/interface-osomform-repository.php';
 // Load database repository
 require get_template_directory() . '/inc/repositories/class-osomform-db.php';
+// Load file repository
+require get_template_directory() . '/inc/repositories/class-osomform-file.php';
 // Load rest controller
 require get_template_directory() . '/inc/api/class-osomform-rest-controller.php';
 
@@ -39,15 +41,17 @@ add_action( 'after_setup_theme', 'osomform_setup' );
 // Enqueue scripts and styles.
 add_action( 'wp_enqueue_scripts', 'osomform_scripts' );
 
-// Database repository retup.
+// Repository retup.
 	// Get admin page option.
 $remove_data = get_option( 'osomform_remove_store' );
 	// Theme functions attached to this hook are only triggered in the theme (and/or child theme) being activated.
-add_action('after_switch_theme', array( 'OsomformDBRepository', 'osomform_db_table_setup') );
+add_action('after_switch_theme', 'OsomformDBRepository::storage_setup' );
+add_action('after_switch_theme', 'OsomformFileRepository::storage_setup' );
 
 if( 'yes' === $remove_data ) {
 	// Theme functions attached to this hook are only triggered in the theme being deactivated
-	add_action('switch_theme', array( 'OsomformDBRepository', 'osomform_db_table_drop' ) );
+	add_action('switch_theme', 'OsomformDBRepository::storage_remove' );
+	add_action('switch_theme', 'OsomformFileRepository::storage_remove' );
 }
 	// Register api controller.
 add_action( 'rest_api_init', 'osomform_register_rest_routes' );
