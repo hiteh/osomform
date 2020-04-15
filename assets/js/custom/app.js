@@ -77,7 +77,7 @@
 	      	alert( response.message )
     	} )
     	.fail( ( response ) => {
-      		alert( response.error );
+    		alert( response.error );
     	} )
 	}
 
