@@ -28,8 +28,8 @@ class OsomformDBRepository implements OsomformRepositoryInterface {
     	
     	global $wpdb;
     	$table_name = $wpdb->prefix . OsomformDBRepository::DB_TABLE;
-		$myrows = $wpdb->get_results( "SELECT * FROM $table_name" );
-		return $myrows;
+		$rows = $wpdb->get_results( "SELECT * FROM $table_name" );
+		return $rows;
     }
 
     public static function storage_setup() {

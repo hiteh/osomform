@@ -19,10 +19,7 @@ class OsomformFileRepository implements OsomformRepositoryInterface {
 	const DIR_PATH = WP_CONTENT_DIR . OsomformFileRepository::FW_SLASH . OsomformFileRepository::DIR_NAME;
 
 	public function create( array $data ) {
-    	
-    	if( ! wp_is_writable( WP_CONTENT_DIR ) ) {
-    		return;
-    	}
+
 		$file = file_get_contents( OsomformFileRepository::FILE_PATH );
 		$temp = json_decode( $file, true );
 		$count = count( $temp );
