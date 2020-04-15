@@ -183,7 +183,7 @@ if( ! function_exists( 'osomform_register_rest_routes' ) ) {
         $repository = new OsomformDBRepository();
         break;
     }
-    var_dump($repository->readAll());
+
     $controller = new Osomform_REST_Controller( $repository );
     $controller->register_routes();
   } 
