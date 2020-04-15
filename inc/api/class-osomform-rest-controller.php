@@ -150,7 +150,10 @@ class Osomform_REST_Controller extends WP_REST_Controller {
 
 }
 
-// Register api routs.
+/**
+ * Register api routes
+ *
+ */
 if( ! function_exists( 'osomform_register_rest_routes' ) ) {
   
   function osomform_register_rest_routes() {
@@ -180,7 +183,7 @@ if( ! function_exists( 'osomform_register_rest_routes' ) ) {
         $repository = new OsomformDBRepository();
         break;
     }
-
+    var_dump($repository->readAll());
     $controller = new Osomform_REST_Controller( $repository );
     $controller->register_routes();
   } 

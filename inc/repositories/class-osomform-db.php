@@ -11,8 +11,19 @@
 
 class OsomformDBRepository implements OsomformRepositoryInterface {
 	
+	/**
+	* Repository interface.
+	*
+	* @var string DB_TABLE table name
+	*/
 	const DB_TABLE = 'osomform';
  
+	/**
+	* Create item
+	*
+	* @param array $data creates db record.
+	* @return int
+	*/
 	public function create( array $data ) {
 
 		global $wpdb;
@@ -24,6 +35,11 @@ class OsomformDBRepository implements OsomformRepositoryInterface {
 		return $id;
 	}
 
+	/**
+	* Get all db records
+	*
+	* @return array
+	*/
     public function readAll() {
     	
     	global $wpdb;
@@ -32,6 +48,11 @@ class OsomformDBRepository implements OsomformRepositoryInterface {
 		return $rows;
     }
 
+	/**
+	* Setup db table
+	*
+	* @return array
+	*/
     public static function storage_setup() {
     	
     	global $wpdb;
@@ -53,6 +74,11 @@ class OsomformDBRepository implements OsomformRepositoryInterface {
 		dbDelta( $sql );
     }
 
+	/**
+	* Remove db table
+	*
+	* @return array
+	*/
     public static function storage_remove() {
 
 		global $wpdb;
