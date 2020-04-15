@@ -26,6 +26,9 @@ function osomfom_register_custom_menu_page() {
  */
 function osomform_page() {
 	
+	if ( ! current_user_can( 'manage_options' ) ) {
+		return;
+	} 
 	$store_type = get_option( 'osomform_store_type' );
 	
 	if( 'database' === $store_type ) {
