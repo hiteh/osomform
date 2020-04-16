@@ -41,21 +41,17 @@ function osomform_page() {
 		$data = json_decode( $store->readAll() );
 	}
 
-	if(!class_exists('WP_List_Table')){
-   		require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
-	}
-
 	?>
    	<body>
       <table class="wp-list-table widefat striped">
          <thead>
          	<tr>
-	            <th scope="col" class="column-primary manage-column"><?php echo __( 'ID', 'osomform' ) ?><th>
-	            <th scope="col" class="column-primary manage-column"><?php echo __( 'First Name', 'osomform' ) ?><th>
-	            <th scope="col" class="column-primary manage-column"><?php echo __( 'Last Name', 'osomform' ) ?><th>
-	            <th scope="col" class="column-primary manage-column"><?php echo __( 'Login', 'osomform' ) ?><th>
-	            <th scope="col" class="column-primary manage-column"><?php echo __( 'E-mail', 'osomform' ) ?><th>
-	            <th scope="col" class="column-primary manage-column"><?php echo __( 'City', 'osomform' ) ?><th>
+	            <th scope="col" class="column-primary"><?php echo __( 'ID', 'osomform' ) ?><th>
+	            <th scope="col" class="column-primary"><?php echo __( 'First Name', 'osomform' ) ?><th>
+	            <th scope="col" class="column-primary"><?php echo __( 'Last Name', 'osomform' ) ?><th>
+	            <th scope="col" class="column-primary"><?php echo __( 'Login', 'osomform' ) ?><th>
+	            <th scope="col" class="column-primary"><?php echo __( 'E-mail', 'osomform' ) ?><th>
+	            <th scope="col" class="column-primary"><?php echo __( 'City', 'osomform' ) ?><th>
         	</tr>
          </thead>
          <tbody>
