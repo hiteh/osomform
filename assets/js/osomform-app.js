@@ -9,7 +9,7 @@
   var consent = $("#consent");
   var errors = [];
   var payload = {};
-  var endpoint = wpApiSettings.root + 'osomform/v1/osomcontact'; // Set errors
+  var endpoint = wpApiSettings.root + "osomform/v1/osomcontact"; // Set errors
 
   var setErrors = function setErrors(test, element) {
     if (test) {

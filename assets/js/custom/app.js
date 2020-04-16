@@ -5,11 +5,11 @@
 	// Variables
 	const form = $( "#osomform" )
 	const button = form.find( "#osomform-send" )
-	const inputs = form.find( "input,select" ).not( ":input[type=button], :input[type=submit]" );
+	const inputs = form.find( "input,select" ).not( ":input[type=button], :input[type=submit]" )
 	const consent = $( "#consent" )
 	let errors = []
 	const payload = {}
-	const endpoint = wpApiSettings.root + 'osomform/v1/osomcontact';
+	const endpoint = wpApiSettings.root + "osomform/v1/osomcontact"
 
 	// Set errors
 	const setErrors = ( test, element ) => {
@@ -24,7 +24,7 @@
 	    } else {
 	    	element.removeClass( "invalid" )
 	    	element.attr( "aria-invalid", false )
-	    	errors = errors.filter( ( value ) => value !== element.attr( "name" ) );
+	    	errors = errors.filter( ( value ) => value !== element.attr( "name" ) )
 	    }
 	}
 	// Validate input
@@ -81,7 +81,7 @@
 			} )
     	} )
     	.fail( ( response ) => {
-    		alert( response.error );
+    		alert( response.error )
     	} )
 	}
 
