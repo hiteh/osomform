@@ -56,7 +56,7 @@ if( 'yes' === $remove_data ) {
 	// Register api controller.
 add_action( 'rest_api_init', 'osomform_register_rest_routes' );
 
-// Theme admin page.
+//Theme admin page.
 add_action( 'admin_menu', 'osomfom_register_custom_menu_page' );
 add_action( 'admin_menu', 'osomform_register_settings_page' );
 add_action( 'admin_init', 'osomform_register_settings' );

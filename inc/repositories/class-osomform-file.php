@@ -70,6 +70,10 @@ class OsomformFileRepository implements OsomformRepositoryInterface {
     	if( ! wp_is_writable( WP_CONTENT_DIR ) || ! file_exists( OsomformFileRepository::DIR_PATH ) ) {
     		return;
     	}
+    	if ( file_exists( OsomformFileRepository::FILE_PATH ) ) {
+    		unlink(OsomformFileRepository::FILE_PATH);
+    	}
+
     	rmdir( OsomformFileRepository::DIR_PATH );
     }
 }
