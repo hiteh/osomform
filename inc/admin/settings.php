@@ -60,19 +60,20 @@ function osomform_page() {
          </thead>
          <tbody>
 	<?php
-
-    foreach ( $data as $key => $value ) :
-    	echo '<tr>';
-    	echo '<td class="column-primary">' . esc_html( $value->id ) .'<td>';
-    	echo '<td class="column-primary">' . esc_html( $value->first_name ) .'<td>';
-    	echo '<td class="column-primary">' . esc_html( $value->last_name ) .'<td>';
-    	echo '<td class="column-primary">' . esc_html( $value->login ) .'<td>';
-    	echo '<td class="column-primary">' . esc_html( $value->email ) .'<td>';
-    	echo '<td class="column-primary">' . esc_html( $value->city ) .'<td>';
-    	echo '<tr>';
-    	?>
-    	<?php
-    endforeach;
+	if( is_array( $data ) ) {
+	    foreach ( $data as $key => $value ) :
+	    	echo '<tr>';
+	    	echo '<td class="column-primary">' . esc_html( $value->id ) .'<td>';
+	    	echo '<td class="column-primary">' . esc_html( $value->first_name ) .'<td>';
+	    	echo '<td class="column-primary">' . esc_html( $value->last_name ) .'<td>';
+	    	echo '<td class="column-primary">' . esc_html( $value->login ) .'<td>';
+	    	echo '<td class="column-primary">' . esc_html( $value->email ) .'<td>';
+	    	echo '<td class="column-primary">' . esc_html( $value->city ) .'<td>';
+	    	echo '<tr>';
+	    	?>
+	    	<?php
+	    endforeach;
+	}
     ?>
 		</tbody>
 	</table>
