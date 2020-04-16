@@ -58,7 +58,6 @@ class OsomformDBRepository implements OsomformRepositoryInterface {
     	global $wpdb;
 		$table_name = $wpdb->prefix . OsomformDBRepository::DB_TABLE;
 		$charset_collate = $wpdb->get_charset_collate();
-		// dbDelta checks if table exists by using DESCRIBE. If you are unig Query Monitor plugin for some reasons it displays error.
 		$sql = "CREATE TABLE $table_name (
 		  id mediumint(9) NOT NULL AUTO_INCREMENT,
 		  first_name tinytext NOT NULL,
@@ -71,7 +70,7 @@ class OsomformDBRepository implements OsomformRepositoryInterface {
 		) $charset_collate;";
 
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-		dbDelta( $sql );
+		maybe_create_table( $table_name, $sql );
     }
 
 	/**
