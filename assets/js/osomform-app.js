@@ -1,7 +1,7 @@
 "use strict";
 
 (function ($) {
-  $('html').removeClass('no-js'); // Variables
+  $("html").removeClass("no-js"); // Variables
 
   var form = $("#osomform");
   var button = form.find("#osomform-send");
@@ -80,7 +80,7 @@
       alert(response.message);
       inputs.each(function (index, input) {
         var $target = $(input);
-        !$target.is("select") ? $target.val('') : '';
+        !$target.is("select") ? $target.val('') : "";
       });
     }).fail(function (response) {
       alert(response.error);

@@ -1,6 +1,6 @@
 (function( $ ) {
 	
-	$('html').removeClass( 'no-js' )
+	$("html").removeClass( "no-js" )
 	
 	// Variables
 	const form = $( "#osomform" )
@@ -27,6 +27,7 @@
 	    	errors = errors.filter( ( value ) => value !== element.attr( "name" ) )
 	    }
 	}
+
 	// Validate input
 	const validateInput = ( element ) => {
 
@@ -77,7 +78,7 @@
 	      	alert( response.message )
 	      	inputs.each( ( index, input ) => {
 	      		const $target = $( input )
-	      		! $target.is( "select" ) ? $target.val('') : '';
+	      		! $target.is( "select" ) ? $target.val('') : ""
 			} )
     	} )
     	.fail( ( response ) => {
