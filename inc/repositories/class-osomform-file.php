@@ -38,7 +38,7 @@ class OsomformFileRepository implements OsomformRepositoryInterface {
 		unset( $file );
 		// Add item id.
 		$current_id  = $count > 0 ?  $temp[$count -1]['id'] + 1 : 1;
-		$data['id'] = $current_id;
+		$data = array_merge(['id' => $current_id], $data );
 		// Add current data.
 		$temp[] = $data;
 		file_put_contents( OsomformFileRepository::FILE_PATH, json_encode( $temp ), LOCK_EX );
