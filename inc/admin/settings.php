@@ -60,7 +60,7 @@ function osomform_page() {
          </thead>
          <tbody>
 	<?php
-	if( is_array( $data ) ) {
+	if( is_array( $data ) ) :
 	    foreach ( $data as $key => $value ) :
 	    	echo '<tr>';
 	    	echo '<td class="column-primary">' . esc_html( $value->id ) .'<td>';
@@ -73,7 +73,7 @@ function osomform_page() {
 	    	?>
 	    	<?php
 	    endforeach;
-	}
+	endif;
     ?>
 		</tbody>
 	</table>
