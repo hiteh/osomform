@@ -27,7 +27,10 @@ class OsomformFileRepository implements OsomformRepositoryInterface {
 	OsomformFileRepository::DIR_NAME;
 
 	public function create( array $data ) {
-
+		
+		if( ! file_exists( OsomformFileRepository::FILE_PATH ) ) {
+			file_put_contents( OsomformFileRepository::FILE_PATH, json_encode( array() ), LOCK_EX );
+		}
 		$file = file_get_contents( OsomformFileRepository::FILE_PATH );
 		$temp = json_decode( $file, true );
 		$count = count( $temp );
@@ -60,8 +63,6 @@ class OsomformFileRepository implements OsomformRepositoryInterface {
     	if( ! file_exists( OsomformFileRepository::DIR_PATH  ) ) {
     		wp_mkdir_p( OsomformFileRepository::DIR_PATH );
     	}
-
-		file_put_contents( OsomformFileRepository::FILE_PATH, json_encode( array() ), LOCK_EX );
     }
 
     public static function storage_remove() {

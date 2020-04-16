@@ -63,12 +63,12 @@ function osomform_page() {
 
     foreach ( $data as $key => $value ) :
     	echo '<tr>';
-    	echo '<td class="column-primary">' . $value->id .'<td>';
-    	echo '<td class="column-primary">' . $value->first_name .'<td>';
-    	echo '<td class="column-primary">' . $value->last_name .'<td>';
-    	echo '<td class="column-primary">' . $value->login .'<td>';
-    	echo '<td class="column-primary">' . $value->email .'<td>';
-    	echo '<td class="column-primary">' . $value->city .'<td>';
+    	echo '<td class="column-primary">' . esc_html( $value->id ) .'<td>';
+    	echo '<td class="column-primary">' . esc_html( $value->first_name ) .'<td>';
+    	echo '<td class="column-primary">' . esc_html( $value->last_name ) .'<td>';
+    	echo '<td class="column-primary">' . esc_html( $value->login ) .'<td>';
+    	echo '<td class="column-primary">' . esc_html( $value->email ) .'<td>';
+    	echo '<td class="column-primary">' . esc_html( $value->city ) .'<td>';
     	echo '<tr>';
     	?>
     	<?php

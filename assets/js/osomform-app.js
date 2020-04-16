@@ -114,6 +114,5 @@
 
     preparePayload();
     sendRequest("POST", endpoint, payload);
-    e.preventDefault();
   });
 })(jQuery);
