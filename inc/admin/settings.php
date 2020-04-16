@@ -50,12 +50,12 @@ function osomform_page() {
       <table class="wp-list-table widefat striped">
          <thead>
          	<tr>
-	            <th scope="col" class="column-primary manage-column">ID<th>
-	            <th scope="col" class="column-primary manage-column">First Name<th>
-	            <th scope="col" class="column-primary manage-column">Last Name<th>
-	            <th scope="col" class="column-primary manage-column">Login<th>
-	            <th scope="col" class="column-primary manage-column">E-mail<th>
-	            <th scope="col" class="column-primary manage-column">City<th>
+	            <th scope="col" class="column-primary manage-column"><?php echo __( 'ID', 'osomform' ) ?><th>
+	            <th scope="col" class="column-primary manage-column"><?php echo __( 'First Name', 'osomform' ) ?><th>
+	            <th scope="col" class="column-primary manage-column"><?php echo __( 'Last Name', 'osomform' ) ?><th>
+	            <th scope="col" class="column-primary manage-column"><?php echo __( 'Login', 'osomform' ) ?><th>
+	            <th scope="col" class="column-primary manage-column"><?php echo __( 'E-mail', 'osomform' ) ?><th>
+	            <th scope="col" class="column-primary manage-column"><?php echo __( 'City', 'osomform' ) ?><th>
         	</tr>
          </thead>
          <tbody>
