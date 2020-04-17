@@ -198,23 +198,18 @@ if( ! function_exists( 'osomform_register_rest_routes' ) ) {
 
     $storage_type = get_option( 'osomform_store_type' );
 
-    if( 'database' === $storage_type ) {
-      OsomformDBRepository::storage_setup();
-    }
-
-    if( 'file' === $storage_type ) {
-      OsomformFileRepository::storage_setup();
-    }
-
     switch ( $storage_type ) {
       case 'database':
         $repository = new OsomformDBRepository();
+        OsomformDBRepository::storage_setup();
         break;
       case 'file':
         $repository = new OsomformFileRepository();
+        OsomformFileRepository::storage_setup();
         break;
       default:
         $repository = new OsomformDBRepository();
+        OsomformDBRepository::storage_setup();
         break;
     }
 
