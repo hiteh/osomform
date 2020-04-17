@@ -17,7 +17,7 @@ class OsomformDBRepository implements OsomformRepositoryInterface {
 	* @var string DB_TABLE table name
 	*/
 	const DB_TABLE = 'osomform';
- 
+
 	/**
 	* Create item
 	*
@@ -40,22 +40,22 @@ class OsomformDBRepository implements OsomformRepositoryInterface {
 	*
 	* @return array
 	*/
-    public function readAll() {
-    	
-    	global $wpdb;
-    	$table_name = $wpdb->prefix . OsomformDBRepository::DB_TABLE;
+	public function readAll() {
+		
+		global $wpdb;
+		$table_name = $wpdb->prefix . OsomformDBRepository::DB_TABLE;
 		$rows = $wpdb->get_results( "SELECT * FROM $table_name" );
 		return $rows;
-    }
+	}
 
 	/**
 	* Setup db table
 	*
 	* @return array
 	*/
-    public static function storage_setup() {
-    	
-    	global $wpdb;
+	public static function storage_setup() {
+		
+		global $wpdb;
 		$table_name = $wpdb->prefix . OsomformDBRepository::DB_TABLE;
 		$charset_collate = $wpdb->get_charset_collate();
 		$sql = "CREATE TABLE $table_name (
@@ -71,14 +71,14 @@ class OsomformDBRepository implements OsomformRepositoryInterface {
 
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 		maybe_create_table( $table_name, $sql );
-    }
+	}
 
 	/**
 	* Remove db table
 	*
 	* @return array
 	*/
-    public static function storage_remove() {
+	public static function storage_remove() {
 
 		global $wpdb;
 		$table_name = $wpdb->prefix . OsomformDBRepository::DB_TABLE;
