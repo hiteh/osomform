@@ -15,8 +15,8 @@ wykorzystałem WPGulp w związku z tym:
 
 ## Endpointy:
 * /wp-json/osomform/v1/osomcontact
-	* GET /wp-json/osomform/v1/osomcontact - przeglądanie zapisanych formularzy -> administrator / wymaga autentykacji
-	* POST /wp-json/osomform/v1/osomcontact - wysyłenie formularza -> dostęp otwarty dla każdego
+	* GET - przeglądanie zapisanych formularzy -> administrator / wymaga autentykacji
+	* POST - wysyłenie formularza -> dostęp otwarty dla każdego
 	* OPTIONS - schema
 
 ## Widoki
