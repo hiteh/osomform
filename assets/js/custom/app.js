@@ -1,8 +1,7 @@
 (function( $ ) {
 	
-	$("html").removeClass( "no-js" )
+	$( "html" ).removeClass( "no-js" )
 	
-	// Variables
 	const form = $( "#osomform" )
 	const button = form.find( "#osomform-send" )
 	const inputs = form.find( "input,select" ).not( ":input[type=button], :input[type=submit]" )
@@ -11,7 +10,6 @@
 	const payload = {}
 	const endpoint = wpApiSettings.root + "osomform/v1/osomcontact"
 
-	// Set errors
 	const setErrors = ( test, element ) => {
 		if ( test ) {
 	    	element.addClass( "invalid" )
@@ -28,7 +26,6 @@
 	    }
 	}
 
-	// Validate input
 	const validateInput = ( element ) => {
 
 		const type = element.attr( "type" )
@@ -55,7 +52,6 @@
 		}
 	}
 
-	// Prepare payload data
 	const preparePayload = () => {
 		inputs.each( ( index, input ) => {
 			let element = $( input )
@@ -63,7 +59,6 @@
 		} )
 	}
 
-	// Send request
 	const sendRequest = ( method, endpoint, payload ) => {
 		$.ajax( {
       		url: endpoint,
@@ -86,7 +81,6 @@
     	} )
 	}
 
-	// Validate form inputs on value change event
 	inputs.each( ( index, input ) => {
 		$( input ).on( "input", ( e ) => {
 
@@ -96,14 +90,12 @@
 		} )
 	} )
 	
-	// Enable/disable button on consent checkbox change event
 	consent.on( "change", ( e ) => {
 
 		const checked = $(e.target).prop( "checked" )
 		checked ? button.prop( "disabled", false ) : button.prop( "disabled", true )
 	} )
 
-	// Validate inputs and send request on click
 	button.on( "click", ( e ) => {
 		
 		e.preventDefault()
