@@ -54,6 +54,7 @@ class Osomform_REST_Controller extends WP_REST_Controller {
         'callback' => array( $this, 'create_item' ),
         'permission_callback' => array( $this, 'create_item_permissions_check' ),
       ),
+      'schema' => [ $this, 'get_collection_params' ],
     ) );
   }
 
@@ -145,7 +146,44 @@ class Osomform_REST_Controller extends WP_REST_Controller {
    * @return array
    */
   public function get_collection_params() {
-    // TODO: Add schema
+    return array(
+        '$schema'  => 'http://json-schema.org/draft-04/schema#',
+        'title'    => 'osomcontact',
+        'type'     => 'object',
+        'required' => [ 'first_name', 'last_name', 'login', 'email', 'city' ],
+        'properties'           => array(
+            'id' => array(
+                'description'  => esc_html__( 'Unique identifier for the user.', 'osomform' ),
+                'type'         => 'integer',
+                'readonly'     => true,
+            ),
+            'first_name' => array(
+                'description'  => esc_html__( 'First name of the user.', 'osomform' ),
+                'type'         => 'string',
+            ),
+            'last_name' => array(
+                'description'  => esc_html__( 'Last name of the user.', 'osomform' ),
+                'type'         => 'string',
+            ),
+            'login' => array(
+                'description'  => esc_html__( 'Login of the user.', 'osomform' ),
+                'type'         => 'string',
+            ),
+            'email' => array(
+                'description'  => esc_html__( 'E-mail address of the user.', 'osomform' ),
+                'type'         => 'string',
+            ),
+            'city' => array(
+                'description'  => esc_html__( 'City of the user.', 'osomform' ),
+                'type'         => 'string',
+            ),
+            'submitted_at' => array(
+                'description'  => esc_html__( 'The date form was submitted at.', 'osomform' ),
+                'type'         => 'string',
+                'readonly'     => true,
+            ),
+        ),
+    );
   }
 
 }
