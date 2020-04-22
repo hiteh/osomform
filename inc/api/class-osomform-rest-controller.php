@@ -86,13 +86,7 @@ class Osomform_REST_Controller extends WP_REST_Controller {
    */
   public function get_items( $request ) {
     
-    $storage_type = get_option( 'osomform_store_type' );
-
     $data = $this->repository->readAll();
-
-    if( 'file' === $storage_type ) {
-      $data = json_decode( $this->repository->readAll(), true );
-    }
 
     if ( is_array( $data ) ) {
       return rest_ensure_response( $data );
@@ -199,10 +193,7 @@ if( ! function_exists( 'osomform_register_rest_routes' ) ) {
     $storage_type = get_option( 'osomform_store_type' );
 
     switch ( $storage_type ) {
-      case 'database':
-        $repository = new OsomformDBRepository();
-        OsomformDBRepository::storage_setup();
-        break;
+
       case 'file':
         $repository = new OsomformFileRepository();
         OsomformFileRepository::storage_setup();

@@ -33,14 +33,13 @@ function osomform_page() {
 	
 	if( 'database' === $store_type ) {
 		$store = new OsomformDBRepository();
-		$data = $store->readAll();
 	}
 
 	if( 'file' === $store_type ) {
 		$store = new OsomformFileRepository();
-		$data = json_decode( $store->readAll() );
+		
 	}
-
+	$data = $store->readAll();
 	?>
    	<body>
       <table class="wp-list-table widefat striped">

@@ -52,7 +52,7 @@ class OsomformFileRepository implements OsomformRepositoryInterface {
     	if( ! file_exists( OsomformFileRepository::FILE_PATH ) ) {
     		return;
     	}
-    	return file_get_contents( OsomformFileRepository::FILE_PATH );
+    	return json_decode( file_get_contents( OsomformFileRepository::FILE_PATH ) );
     }
 
     public static function storage_setup() {
