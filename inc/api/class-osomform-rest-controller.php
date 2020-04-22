@@ -34,7 +34,8 @@ class Osomform_REST_Controller extends WP_REST_Controller {
    * @param OsomformRepositoryInterface $repository Data repository.
    */
   public function __construct( OsomformRepositoryInterface $repository ) {
-    
+    $this->namespace = 'osomform/v1';
+    $this->rest_base = 'osomcontact';
     $this->repository = $repository;
   }
 
@@ -43,7 +44,7 @@ class Osomform_REST_Controller extends WP_REST_Controller {
    */
   public function register_routes() {
     
-    register_rest_route( 'osomform/v1', '/osomcontact', array(
+    register_rest_route( $this->namespace, '/' . $this->rest_base, array(
       array(
         'methods'  => WP_REST_Server::READABLE,
         'callback' => array( $this, 'get_items' ),
@@ -53,6 +54,23 @@ class Osomform_REST_Controller extends WP_REST_Controller {
         'methods'  => WP_REST_Server::CREATABLE,
         'callback' => array( $this, 'create_item' ),
         'permission_callback' => array( $this, 'create_item_permissions_check' ),
+        'args' => array(
+          'first_name' => array(
+            'required' => true,
+          ),
+          'last_name' => array(
+            'required' => true,
+          ),
+          'login' => array(
+            'required' => true,
+          ),
+          'email' => array(
+            'required' => true,
+          ),
+          'city' => array(
+            'required' => true,
+          ),
+        ),
       ),
       'schema' => [ $this, 'get_collection_params' ],
     ) );
@@ -154,22 +172,28 @@ class Osomform_REST_Controller extends WP_REST_Controller {
             'first_name' => array(
                 'description'  => esc_html__( 'First name of the user.', 'osomform' ),
                 'type'         => 'string',
+                'required'     => true,
             ),
             'last_name' => array(
                 'description'  => esc_html__( 'Last name of the user.', 'osomform' ),
                 'type'         => 'string',
+                'required'     => true,
             ),
             'login' => array(
                 'description'  => esc_html__( 'Login of the user.', 'osomform' ),
                 'type'         => 'string',
+                'required'     => true,
             ),
             'email' => array(
                 'description'  => esc_html__( 'E-mail address of the user.', 'osomform' ),
                 'type'         => 'string',
+                'format'       => 'email',
+                'required'     => true,
             ),
             'city' => array(
                 'description'  => esc_html__( 'City of the user.', 'osomform' ),
                 'type'         => 'string',
+                'required'     => true,
             ),
             'submitted_at' => array(
                 'description'  => esc_html__( 'The date form was submitted at.', 'osomform' ),
